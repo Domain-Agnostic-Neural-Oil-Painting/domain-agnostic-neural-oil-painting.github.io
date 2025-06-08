@@ -5,50 +5,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domain-Agnostic Neural Oil Painting via Normalization Affine Test-Time Adaptation</title>
     <link rel="stylesheet" href="styles.css"> <!-- 如果有CSS文件 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1>Domain-Agnostic Neural Oil Painting via Normalization Affine Test-Time Adaptation</h1>
     </header>
     <main>
-        <!-- 图像显示 -->
-        <div style="text-align: center;">
-            <img src="D-show/pixel.png" alt="Pixel Image" style="max-width: 100%; height: auto; margin-top: 20px;">
-        </div>
-
-        <!-- Abstract -->
-        <div style="text-align: center; margin-top: 30px;">
-            <h2>Abstract</h2>
-            <p style="max-width: 800px; margin: 0 auto;">
-                Neural oil painting synthesis is to sequentially predict brushstroke color and position, forming an oil painting step by step, which could serve as a painting teacher for education and entertainment. Existing methods usually suffer from degraded generalization for real-world photo inputs due to the training-test distribution gap, often manifesting as stroke-induced artifacts (e.g., over-smoothed textures or inconsistent granularity). In an attempt to mitigate this gap, we introduce a domain-agnostic neural painting (DANP) framework that aligns model to the test domain. In particular, we focus on updating affine parameters of normalization layers efficiently, while keeping other parameters frozen. To stabilize adaptation, our framework introduces:
-                <br><br>
-                (1) Asymmetric Dual-Branch with mirror augmentation for robust feature alignment via geometric transformations, 
-                <br>
-                (2) Dual-Branch Interaction Loss combining intra-branch reconstruction and inter-branch consistency, and we also involve an empirical optimization strategy to mitigate gradient oscillations in practice. Experiments on real-world images from diverse domains (e.g., faces, landscapes, and artworks) validate the effectiveness of DANP in resolution-invariant adaptation, decreasing ∼11.3% reconstruction error at 512px and ∼20.3% at 1024px compared to the baseline model. It is worthy noting that our method is compatible with existing methods, e.g., Paint Transformer, and further improves the ∼10.3% perceptual quality.
-            </p>
-        </div>
-
-        <!-- Methodology Title -->
+        <!-- Results Title -->
         <div style="text-align: left; margin-top: 40px;">
-            <h2>Methodology</h2>
+            <h2>Results on various datasets</h2>
         </div>
 
-        <!-- 图像显示 -->
-        <div style="text-align: center;">
-            <img src="D-show/pipeline.png" alt="Pipeline Image" style="max-width: 100%; height: auto; margin-top: 20px;">
+        <!-- Paintings on FFHQ -->
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="font-size: 150%;">Paintings on FFHQ</p>
         </div>
 
-        <!-- Methodology Content -->
-        <div style="text-align: left; margin-top: 30px; max-width: 800px; margin: 0 auto;">
-            <p>
-                Given one single input image of 512 × 512, we split it into different levels according to a pyramid hierarchy as a training set. At each level, the resolution of the image gradually increases until the bottom layer generates a boundary feature map of 544 × 544. At each layer, the feature map is divided into 32 × 32 image patches, which are then input into the Pretrained model for further processing. 
-                <br><br>
-                II. During the Dual-Branch adaptative optimization process, we adopt a freezing strategy for the pretrained model, freezing all other layers except BatchNorm and LayerNorm during the training process to keep the remaining parameters unchanged. The test dataset obtained in the first stage is divided into two parallel processing routes, one of which horizontally flips the image patch and the current patch, and inputs them in batches into the pretrained model. These two parallel circuits use their respective pixel loss calculations to optimize the output results of image blocks, gradually adjusting the parameters of the pretrained model.
-            </p>
+        <!-- First Image Carousel (FFHQ) -->
+        <div class="container" style="min-height: 350px; margin-top: 30px;">
+            <p style="text-align: center; font-size: 150%;">Paintings on Landscapes</p>
+            <div id="resultCarousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
+                <div class="carousel-inner">
+                    <!-- First Group -->
+                    <div class="carousel-item active">
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <th><img width="350" src="DANP/D-show/results/original/Landscapes(43).png"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Landscapes43.gif"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Landscapes(43).png"></th>
+                                </tr>
+                                <tr>
+                                    <th><div class="caption">Target</div></th>
+                                    <th><div class="caption">Painting Animation</div></th>
+                                    <th><div class="caption">Painting Result</div></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Second Group -->
+                    <div class="carousel-item">
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <th><img width="350" src="DANP/D-show/results/original/Landscapes(52).png"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Landscapes52.gif"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Landscapes(52).png"></th>
+                                </tr>
+                                <tr>
+                                    <th><div class="caption">Target</div></th>
+                                    <th><div class="caption">Painting Animation</div></th>
+                                    <th><div class="caption">Painting Result</div></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Third Group -->
+                    <div class="carousel-item">
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <th><img width="350" src="DANP/D-show/results/original/Landscapes(70).png"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Landscapes70.gif"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Landscapes(70).png"></th>
+                                </tr>
+                                <tr>
+                                    <th><div class="caption">Target</div></th>
+                                    <th><div class="caption">Painting Animation</div></th>
+                                    <th><div class="caption">Painting Result</div></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#resultCarousel1" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#resultCarousel1" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
+
+        <!-- Paintings on Wikiart -->
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="font-size: 150%;">Paintings on Wikiart</p>
+        </div>
+
+        <!-- Second Image Carousel (Wikiart) -->
+        <div class="container" style="min-height: 350px; margin-top: 30px;">
+            <p style="text-align: center; font-size: 150%;">Paintings on Wikiart</p>
+            <div id="resultCarousel2" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
+                <div class="carousel-inner">
+                    <!-- First Group -->
+                    <div class="carousel-item active">
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <th><img width="350" src="DANP/D-show/results/original/Wikiart(15).png"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Wikiart15.gif"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Wikiart(15).png"></th>
+                                </tr>
+                                <tr>
+                                    <th><div class="caption">Target</div></th>
+                                    <th><div class="caption">Painting Animation</div></th>
+                                    <th><div class="caption">Painting Result</div></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Second Group -->
+                    <div class="carousel-item">
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <th><img width="350" src="DANP/D-show/results/original/Wikiart(25).png"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Wikiart25.gif"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Wikiart(25).png"></th>
+                                </tr>
+                                <tr>
+                                    <th><div class="caption">Target</div></th>
+                                    <th><div class="caption">Painting Animation</div></th>
+                                    <th><div class="caption">Painting Result</div></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Third Group -->
+                    <div class="carousel-item">
+                        <table width="100%" align="center">
+                            <tbody>
+                                <tr>
+                                    <th><img width="350" src="DANP/D-show/results/original/Wikiart(81).png"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Wikiart81.gif"></th>
+                                    <th><img width="350" src="DANP/D-show/results/output/Wikiart(81).png"></th>
+                                </tr>
+                                <tr>
+                                    <th><div class="caption">Target</div></th>
+                                    <th><div class="caption">Painting Animation</div></th>
+                                    <th><div class="caption">Painting Result</div></th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#resultCarousel2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#resultCarousel2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Comparison Title -->
+        <div style="text-align: left; margin-top: 40px;">
+            <h2>Comparison of generated images with varying numbers of brushstrokes</h2>
+        </div>
+
+        <!-- Image Display -->
+        <div style="text-align: center; margin-top: 30px;">
+            <img width="500" src="DANP/D-show/stroke.png" alt="Comparison of brushstrokes" style="max-width: 100%; height: auto;">
+        </div>
+
     </main>
     <footer>
         <p>&copy; 2025 DANP Project</p>
     </footer>
+
+    <!-- Bootstrap JS (for carousel functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
