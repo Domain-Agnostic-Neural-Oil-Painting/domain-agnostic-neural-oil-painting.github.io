@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to DANP</title>
+    <title>Domain-Agnostic Neural Oil Painting via Normalization Affine Test-Time Adaptation</title>
     <link rel="stylesheet" href="styles.css"> <!-- 如果有CSS文件 -->
 </head>
 <body>
     <header>
-        <h1>Welcome to the Domain-Agnostic Neural Oil Painting Project!</h1>
+        <h1>Domain-Agnostic Neural Oil Painting via Normalization Affine Test-Time Adaptation</h1>
     </header>
     <main>
-        <p>This is the home page of the DANP project.</p>
-        <p>Explore the website for more information!</p>
+        <!-- 图像显示 -->
+        <div style="text-align: center;">
+            <img src="D-show/pixel.png" alt="Pixel Image" style="max-width: 100%; height: auto; margin-top: 20px;">
+        </div>
+
+        <!-- Abstract -->
+        <div style="text-align: center; margin-top: 30px;">
+            <h2>Abstract</h2>
+            <p style="max-width: 800px; margin: 0 auto;">
+                Neural oil painting synthesis is to sequentially predict brushstroke color and position, forming an oil painting step by step, which could serve as a painting teacher for education and entertainment. Existing methods usually suffer from degraded generalization for real-world photo inputs due to the training-test distribution gap, often manifesting as stroke-induced artifacts (e.g., over-smoothed textures or inconsistent granularity). In an attempt to mitigate this gap, we introduce a domain-agnostic neural painting (DANP) framework that aligns model to the test domain. In particular, we focus on updating affine parameters of normalization layers efficiently, while keeping other parameters frozen. To stabilize adaptation, our framework introduces:
+                <br><br>
+                (1) Asymmetric Dual-Branch with mirror augmentation for robust feature alignment via geometric transformations, 
+                <br>
+                (2) Dual-Branch Interaction Loss combining intra-branch reconstruction and inter-branch consistency, and we also involve an empirical optimization strategy to mitigate gradient oscillations in practice. Experiments on real-world images from diverse domains (e.g., faces, landscapes, and artworks) validate the effectiveness of DANP in resolution-invariant adaptation, decreasing ∼11.3% reconstruction error at 512px and ∼20.3% at 1024px compared to the baseline model. It is worthy noting that our method is compatible with existing methods, e.g., Paint Transformer, and further improves the ∼10.3% perceptual quality.
+            </p>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 DANP Project</p>
     </footer>
 </body>
 </html>
+
