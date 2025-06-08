@@ -1,0 +1,5 @@
+h1 {
+    text-align: center; /* 水平居中 */
+    margin-top: 50px;   /* 给标题添加一些顶部间距 */
+    font-size: 2em;     /* 可根据需要调整字体大小 */
+}
