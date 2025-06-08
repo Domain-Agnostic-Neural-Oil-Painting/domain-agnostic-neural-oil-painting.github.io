@@ -27,10 +27,28 @@
                 (2) Dual-Branch Interaction Loss combining intra-branch reconstruction and inter-branch consistency, and we also involve an empirical optimization strategy to mitigate gradient oscillations in practice. Experiments on real-world images from diverse domains (e.g., faces, landscapes, and artworks) validate the effectiveness of DANP in resolution-invariant adaptation, decreasing ∼11.3% reconstruction error at 512px and ∼20.3% at 1024px compared to the baseline model. It is worthy noting that our method is compatible with existing methods, e.g., Paint Transformer, and further improves the ∼10.3% perceptual quality.
             </p>
         </div>
+
+        <!-- Methodology Title -->
+        <div style="text-align: left; margin-top: 40px;">
+            <h2>Methodology</h2>
+        </div>
+
+        <!-- 图像显示 -->
+        <div style="text-align: center;">
+            <img src="D-show/pipeline.png" alt="Pipeline Image" style="max-width: 100%; height: auto; margin-top: 20px;">
+        </div>
+
+        <!-- Methodology Content -->
+        <div style="text-align: left; margin-top: 30px; max-width: 800px; margin: 0 auto;">
+            <p>
+                Given one single input image of 512 × 512, we split it into different levels according to a pyramid hierarchy as a training set. At each level, the resolution of the image gradually increases until the bottom layer generates a boundary feature map of 544 × 544. At each layer, the feature map is divided into 32 × 32 image patches, which are then input into the Pretrained model for further processing. 
+                <br><br>
+                II. During the Dual-Branch adaptative optimization process, we adopt a freezing strategy for the pretrained model, freezing all other layers except BatchNorm and LayerNorm during the training process to keep the remaining parameters unchanged. The test dataset obtained in the first stage is divided into two parallel processing routes, one of which horizontally flips the image patch and the current patch, and inputs them in batches into the pretrained model. These two parallel circuits use their respective pixel loss calculations to optimize the output results of image blocks, gradually adjusting the parameters of the pretrained model.
+            </p>
+        </div>
     </main>
     <footer>
         <p>&copy; 2025 DANP Project</p>
     </footer>
 </body>
 </html>
-
