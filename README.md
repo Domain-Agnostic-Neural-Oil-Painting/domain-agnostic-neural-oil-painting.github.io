@@ -60,8 +60,5 @@ Given one single input image of 512 × 512, we split it into different levels ac
 
 ---
 
-## Code & Project Links
-
-[CODE DISPLAY](https://github.com/Domain-Agnostic-Neural-Oil-Painting/domain-agnostic-neural-oil-painting.github.io/tree/main)
 
 &copy; 2025 DANP Project - Domain-Agnostic Neural Oil Painting Research
