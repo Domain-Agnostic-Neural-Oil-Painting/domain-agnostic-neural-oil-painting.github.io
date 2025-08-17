@@ -22,6 +22,21 @@ Given one single input image of 512 × 512, we split it into different levels ac
 
 > During the **Dual-Branch adaptive optimization** process, we adopt a freezing strategy for the pretrained model, freezing all other layers except BatchNorm and LayerNorm during the training process to keep the remaining parameters unchanged. The test dataset obtained in the first stage is divided into two parallel processing routes, one of which horizontally flips the image patch and the current patch, and inputs them in batches into the pretrained model.
 
+##  Run
+
+### 1. Fine-tuning
+
+```bash
+cd ~/tta
+sh bash.sh
+```
+### 2. Inference
+
+```bash
+cd ~/inference
+python inference.py
+```
+
 ## Results on Various Datasets
 
 ### Paintings on FFHQ (Facial Images)
